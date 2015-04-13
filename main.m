@@ -29,9 +29,8 @@ int main(int argc, const char * argv[]) {
                 //fail
                 return 0;
             }
-            
-//            CGImageRef image = CGDisplayCreateImageForRect(displayForPoint, CGRectMake(mouseLoc.x, mouseLoc.y, 1, 1));
-            
+
+            //900 for Macbook Pro
             CGImageRef image = CGWindowListCreateImage(CGRectMake(mouseLoc.x, 900 - mouseLoc.y, 1, 1), kCGWindowListOptionOnScreenOnly, kCGNullWindowID, kCGWindowImageDefault);
             
             NSBitmapImageRep* bitmap = [[NSBitmapImageRep alloc] initWithCGImage:image];
@@ -39,9 +38,9 @@ int main(int argc, const char * argv[]) {
             NSColor* color = [bitmap colorAtX:0 y:0];
             
             
-            NSLog(@"Color: %@", color);
-            NSLog(@"X: %f,   Y: %f", mouseLoc.x, mouseLoc.y);
-            NSLog(@"R: %f  G: %f   B: %f", color.redComponent, color.greenComponent, color.blueComponent);
+            //NSLog(@"Color: %@", color);
+            //NSLog(@"X: %f,   Y: %f", mouseLoc.x, mouseLoc.y);
+            //NSLog(@"R: %f  G: %f   B: %f", color.redComponent, color.greenComponent, color.blueComponent);
             
             if (color.greenComponent > 0.85 && color.greenComponent < 0.86 && color.redComponent > 0.25 && color.redComponent < 0.4 && color.blueComponent > 0.4 && color.blueComponent < 0.45 ) {
                 
